@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.uofr.cs.darwin.common.ConditionalProbabilityTable;
 import org.uofr.cs.darwin.common.Variable;
+import org.uofr.cs.darwin.factors.ConditionalProbabilityTable;
 
-public class ConditionalProbabilityTableOperation {
+public class ConditionalProbabilityTableOperation2 {
 
 	public static ConditionalProbabilityTable multiply(ConditionalProbabilityTable cpt1, ConditionalProbabilityTable cpt2) {
 		ConditionalProbabilityTable cpt3 = new ConditionalProbabilityTable();

@@ -15,8 +15,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import org.uofr.cs.darwin.common.BayesianNetwork;
-import org.uofr.cs.darwin.common.ConditionalProbabilityTable;
 import org.uofr.cs.darwin.common.Variable;
+import org.uofr.cs.darwin.factors.ConditionalProbabilityTable;
 
 public class XmlBif {
 	

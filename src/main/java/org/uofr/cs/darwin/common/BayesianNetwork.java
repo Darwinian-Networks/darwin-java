@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.uofr.cs.darwin.factors.ConditionalProbabilityTable;
+
 public class BayesianNetwork {
 
 	private Map<String, Variable> variables;

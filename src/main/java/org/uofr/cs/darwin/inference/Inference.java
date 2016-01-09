@@ -3,25 +3,13 @@ package org.uofr.cs.darwin.inference;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uofr.cs.darwin.common.ConditionalProbabilityTable;
 import org.uofr.cs.darwin.common.Variable;
-import org.uofr.cs.darwin.utils.ConditionalProbabilityTableOperation;
+import org.uofr.cs.darwin.factors.ConditionalProbabilityTable;
 
 public class Inference {
 
 	public static List<ConditionalProbabilityTable> sumOut(List<ConditionalProbabilityTable> factorization, List<Variable> varsToSumOut) {
 		List<ConditionalProbabilityTable> newFactorization = new ArrayList<>(factorization);
-
-		// ### DEBUG
-		int i = 0;
-		try {
-			System.out.println("Primeira parada");
-			Thread.sleep(10*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// ### --- DEBUG
 		
 		for (Variable varToSumOut : varsToSumOut) {
 			// Multiply all together
@@ -29,7 +17,7 @@ public class Inference {
 			ConditionalProbabilityTable product = Inference.multiplyAll(relevantCpts);
 			
 			// Marginalize out the variable
-			ConditionalProbabilityTable marginal = ConditionalProbabilityTableOperation.marginalize(product, varToSumOut);
+			ConditionalProbabilityTable marginal = product.marginalize(varToSumOut);
 			newFactorization.removeAll(relevantCpts);
 			newFactorization.add(marginal);
 		}
@@ -46,14 +34,13 @@ public class Inference {
 			}
 		return relevantCpts;
 	}
-	
-	//TODO instead of ConditionalProbabilityTable use a parent class Factor (Inference should be generic: for CPTs or ADDs)
+
 	public static ConditionalProbabilityTable multiplyAll(List<ConditionalProbabilityTable> cpts) {
 		ConditionalProbabilityTable product = null;
 		if (cpts.size() > 0) {
 			product = cpts.get(0);
 			for (int i = 1; i < cpts.size(); i++) {
-				product = ConditionalProbabilityTableOperation.multiply(product, cpts.get(i));
+				product = product.multiply(cpts.get(i));
 			}
 		}
 		return product;

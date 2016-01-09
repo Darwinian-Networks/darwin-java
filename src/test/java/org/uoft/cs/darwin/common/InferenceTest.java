@@ -9,8 +9,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.junit.Test;
 import org.uofr.cs.darwin.common.BayesianNetwork;
-import org.uofr.cs.darwin.common.ConditionalProbabilityTable;
 import org.uofr.cs.darwin.common.Variable;
+import org.uofr.cs.darwin.factors.ConditionalProbabilityTable;
 import org.uofr.cs.darwin.inference.Inference;
 import org.uofr.cs.darwin.io.XmlBif;
 import org.xml.sax.SAXException;
